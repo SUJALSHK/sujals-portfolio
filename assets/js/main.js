@@ -303,25 +303,77 @@ function initProjectCarousel() {
 
 initProjectCarousel();
 
-if (typeof ScrollReveal !== "undefined" && !reducedMotion.matches) {
-  ScrollReveal({
-    distance: "45px",
-    duration: 900,
-    delay: 120,
-    easing: "ease-out",
-    reset: false,
-  });
+function initRevealAnimations() {
+  if (
+    reducedMotion.matches ||
+    !("IntersectionObserver" in window) ||
+    typeof Element.prototype.animate !== "function"
+  ) {
+    return;
+  }
 
-  ScrollReveal().reveal(".home-content, .section-heading", { origin: "top" });
-  ScrollReveal().reveal(".home-visual, .project-carousel", {
-    origin: "bottom",
-  });
-  ScrollReveal().reveal(".summary-item, .skill-card", {
-    origin: "bottom",
-    interval: 100,
-  });
-  ScrollReveal().reveal(".about-img", { origin: "left" });
-  ScrollReveal().reveal(".about-content, .contact-panel", {
-    origin: "right",
+  const revealGroups = [
+    {
+      selector: ".home-content, .section-heading",
+      from: "translate3d(0, -32px, 0)",
+    },
+    {
+      selector: ".home-visual, .project-carousel",
+      from: "translate3d(0, 32px, 0)",
+    },
+    {
+      selector: ".summary-item, .skill-card",
+      from: "translate3d(0, 28px, 0)",
+      interval: 90,
+    },
+    {
+      selector: ".about-img",
+      from: "translate3d(-32px, 0, 0)",
+    },
+    {
+      selector: ".about-content, .contact-panel",
+      from: "translate3d(32px, 0, 0)",
+    },
+  ];
+
+  const revealOptions = new Map();
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+
+        const options = revealOptions.get(entry.target);
+        const animation = entry.target.animate(
+          [
+            { opacity: 0, transform: options.from },
+            { opacity: 1, transform: "translate3d(0, 0, 0)" },
+          ],
+          {
+            duration: 780,
+            delay: options.delay,
+            easing: "cubic-bezier(0.22, 1, 0.36, 1)",
+            fill: "both",
+          },
+        );
+
+        animation.addEventListener("finish", () => animation.cancel(), {
+          once: true,
+        });
+        observer.unobserve(entry.target);
+      });
+    },
+    { threshold: 0.12, rootMargin: "0px 0px -6% 0px" },
+  );
+
+  revealGroups.forEach(({ selector, from, interval = 0 }) => {
+    document.querySelectorAll(selector).forEach((element, index) => {
+      revealOptions.set(element, {
+        from,
+        delay: 80 + Math.min(index * interval, 270),
+      });
+      observer.observe(element);
+    });
   });
 }
+
+initRevealAnimations();
