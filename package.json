@@ -1,0 +1,17 @@
+{
+  "name": "sujals-portfolio",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Sujal Shakya's personal portfolio and project gallery.",
+  "type": "module",
+  "scripts": {
+    "dev": "python3 -m http.server 8000 --bind 127.0.0.1",
+    "validate": "node scripts/validate.mjs",
+    "test": "npm run validate",
+    "build": "npm run validate && node scripts/build.mjs",
+    "preview": "python3 -m http.server 8080 --bind 127.0.0.1 --directory dist"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

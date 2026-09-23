@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://sujalshk.github.io/sujals-portfolio/sitemap.xml

@@ -1,0 +1,32 @@
+# Dependencies and generated output
+node_modules/
+dist/
+build/
+.cache/
+coverage/
+
+# Framework and deployment caches
+.next/
+.vercel/
+
+# Environment files and credentials
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# Local-only source material and private documents
+private/
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+pnpm-debug.log*
+
+# Editors and operating systems
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
