@@ -341,7 +341,6 @@ button:focus-visible {
   max-width: 58rem;
   margin: 0 auto;
   text-align: center;
-  animation: fade-in 0.8s ease both;
 }
 
 .project-grid {
@@ -360,7 +359,6 @@ button:focus-visible {
   background: rgba(17, 24, 39, 0.78);
   box-shadow: 0 22px 60px rgba(0, 0, 0, 0.26);
   backdrop-filter: blur(16px);
-  animation: fade-in 0.8s ease both;
   transition: border-color 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease;
 }
 
@@ -434,18 +432,6 @@ button:focus-visible {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   margin-top: 1.4rem;
-}
-
-@keyframes fade-in {
-  from {
-    opacity: 0;
-    transform: translateY(18px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
 }
 
 .noscript-message {
