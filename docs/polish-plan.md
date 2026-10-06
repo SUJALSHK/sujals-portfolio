@@ -19,7 +19,7 @@ This document records the production-readiness work completed for Sujal's Portfo
 
 - Add public demo and repository links for the Ghost Student Prevention System when ready
 - Keep project descriptions, technologies, screenshots, and links current
-- Replace the public DOCX resume with a PDF later if a final PDF version is prepared
+- Keep the public PDF resume current before each application cycle
 - Review portfolio copy and resume content before each internship application cycle
 
 ## Release checks

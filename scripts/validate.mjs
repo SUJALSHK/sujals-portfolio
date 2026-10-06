@@ -13,7 +13,7 @@ const requiredFiles = [
   "assets/js/main.js",
   "assets/js/projects-data.js",
   "assets/js/projects-gallery.js",
-  "assets/documents/sujal-shakya-resume.docx",
+  "assets/documents/Sujal_Shakya_Resume1.pdf",
   "robots.txt",
   "sitemap.xml",
 ];
